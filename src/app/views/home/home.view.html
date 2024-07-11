@@ -1,14 +1,6 @@
-<a routerLink="/note/new">
-    <div class="fsss-home-view__note-preview fsss-home-view__note-create">
-        <h1>+</h1>
-        Create new note
-    </div>
-</a>
-<ng-container *ngFor="let note of notes">
-    <a routerLink="/note/{{note.id}}">
-        <div class="fsss-home-view__note-preview">
-            <h2>{{note.title}}</h2>
-            <textarea readonly class="fsss-home-view__note-text" [ngModel]="note.text"></textarea>
-        </div>
-    </a>
-</ng-container>
+<div class="home-container">
+  <app-search-location class="search-location" (locationFound)="coordinates=$event" (cityNameChanged)="cityName=$event"></app-search-location>
+  <fsss-map class="map" [coordinates]="coordinates"></fsss-map>
+  <fsss-town-info [cityName]="cityName" (tripPlanned)="onTripPlanned($event)"></fsss-town-info>
+  <fsss-trip-plan [tripDetails]="tripDetails"></fsss-trip-plan>
+</div>

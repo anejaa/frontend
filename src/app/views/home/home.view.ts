@@ -1,18 +1,30 @@
-import { Component, inject, OnInit } from "@angular/core";
-import { Note } from "src/app/types/note";
-import { HttpClient } from "@angular/common/http";
-import { NOTES_BASE_URL } from "../../app.config";
+import { Component, OnInit } from '@angular/core';
+import { Geometry } from 'src/app/types/location-response';
 
 @Component({
-    templateUrl: './home.view.html',
-    styleUrls: ['./home.view.less'],
+  selector: 'app-home-view',
+  templateUrl: './home.view.html',
+  styleUrls: ['./home.view.less']
 })
 export class HomeView implements OnInit {
-    private http = inject(HttpClient);
+  coordinates: Geometry;
+  cityName: string;
+  tripDetails: { cityName: string, days: number } | null = null;
 
-    notes: Note[] = [];
+  constructor() { }
 
-    ngOnInit() {
-        this.http.get<Note[]>(NOTES_BASE_URL).subscribe(notes => this.notes = notes);
-    }
+  ngOnInit(): void {
+  }
+
+  onLocationFound(coordinates: Geometry) {
+    this.coordinates = coordinates;
+  }
+
+  onCityNameChanged(name: string) {
+    this.cityName = name;
+  }
+
+  onTripPlanned(details: { cityName: string, days: number }) {
+    this.tripDetails = details;
+  }
 }

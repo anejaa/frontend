@@ -1,0 +1,14 @@
+<div class="search-container">
+  <input type="text" [(ngModel)]="cityName" placeholder="Enter city name">
+  <button (click)="searchCity()">Search</button>
+</div>
+  
+<!--<div *ngIf="coordinates" class="result-container">
+  <p>Latitude: {{ coordinates.lat }}</p>
+  <p>Longitude: {{ coordinates.lng }}</p>
+</div>-->
+
+<div *ngIf="errorMessage" class="error-message">
+  <p>{{ errorMessage }}</p>
+</div>
+  

@@ -1,0 +1,16 @@
+<div *ngIf="text" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>{{ cityName }}</h2>
+      <p>{{ text }}</p>
+      <div class="trip-planner">
+        <label for="days">Plan a trip for </label>
+        <input type="number" id="days" [(ngModel)]="tripDays" min="1" max="20" placeholder="Enter number of days">
+        <button (click)="planTrip()" class="plantrip-btn">Plan Trip</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+  

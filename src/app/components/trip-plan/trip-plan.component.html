@@ -1,0 +1,11 @@
+<div *ngIf="plan" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Trip Plan for {{ tripDetails.cityName }}</h2>
+      <p [innerHTML]="plan"></p>
+    </div>
+  </div>
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+  
